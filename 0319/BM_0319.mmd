@@ -1,0 +1,118 @@
+<Document>
+<Version> 22 </Version>
+<JMadonnaVersion> 10.4.3 </JMadonnaVersion>
+<Bounds> 0 0 1271 795 </Bounds>
+<NotesEditor>
+<jeditorpane>
+<size>13</size><family>Lucida Grande</family>
+</jeditorpane>
+</NotesEditor>
+<jmadonna.EquationPanel>
+<DocPanel>
+</DocPanel>
+<jeditorpane>
+<size>12</size><family>Serif</family>METHOD RK4
+
+STARTTIME = 0
+STOPTIME = 100
+DT = 0.1
+
+{Type Equations Here.}
+d/dt (S_c) = -lambda_c*S_c
+d/dt (I_c) =lambda_c*S_c - gamma*I_c
+d/dt (R_c) = gamma*I_c
+d/dt (S_a) = -lambda_a*S_a
+d/dt (I_a) =lambda_a*S_a - gamma*I_a
+d/dt (R_a) = gamma*I_a
+d/dt (S_e) = -lambda_e*S_e
+d/dt (I_e) =lambda_e*S_e - gamma*I_e
+d/dt (R_e) = gamma*I_e
+d/dt(I)=lambda_c*S_c-gamma*I_c+lambda_a*S_a-gamma*I_a+lambda_e*S_e - gamma*I_e
+NI = lambda_c*S_c+lambda_a*S_a+lambda_e*S_e 
+
+
+
+{(alpha_a*N_a+alpha_e*N_e+alpha_c*N_c)}
+lambda_c = (gamma*R0/N_c)*  alpha_c/ (alpha_a+alpha_e+alpha_c)* (I_c + I_a + I_e)
+lambda_a = (gamma*R0/N_a)*  alpha_a/ (alpha_a+alpha_e+alpha_c)* (I_c + I_a + I_e)
+lambda_e = (gamma*R0/N_e)*  alpha_e/ (alpha_a+alpha_e+alpha_c)* (I_c + I_a + I_e)
+
+
+
+
+
+Death_c=R_c*IFR_c
+Death_a=R_a*IFR_a
+Death_e=R_e*IFR_e
+
+alpha_c = 0.009
+alpha_a = 0.630
+alpha_e = (1-alpha_c-alpha_a)
+gamma= 1/4.8
+R0= 2.5
+
+IFR_c = 0
+IFR_a = 0.0015
+IFR_e = 0.0100
+
+init S_c = 15758424*100000/127443493
+init I_c = 0
+init R_c = 0
+init S_a = 76499818*100000/127443493
+init I_a = 10*100000/127443493
+init R_a = 0
+init S_e = 35185241*100000/127443493
+init I_e = 0
+init R_e = 0
+init I = 10*100000/127443493
+
+
+
+N_c = S_c + I_c + R_c
+N_a = S_a + I_a + R_a
+N_e = S_e + I_e + R_e
+N=N_c+N_a+N_c
+
+NIC=lambda_c*S_c
+NIA=lambda_a*S_a
+NIE=lambda_e*S_e
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</jeditorpane>
+</jmadonna.EquationPanel>
+
+<imethod> rk4 </imethod>
+<jmadonna.ParameterPanel>
+<DocPanel>
+</DocPanel>
+<ParamSets>
+</ParamSets>
+</jmadonna.ParameterPanel>
+<jmadonna.MultiPanel>
+<DocPanel>
+</DocPanel>
+<DividerPercent> 1.0 </DividerPercent>
+<Orientation> -1 </Orientation>
+<idx> 0 </idx>
+<TabSplitter>
+<SelectedIndex> -1 </SelectedIndex>
+</TabSplitter>
+<idx> 1 </idx>
+<TabSplitter>
+<SelectedIndex> -1 </SelectedIndex>
+</TabSplitter>
+</jmadonna.MultiPanel>
+
+</Document>

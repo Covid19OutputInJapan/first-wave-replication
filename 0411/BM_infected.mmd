@@ -1,0 +1,255 @@
+<Document>
+<Version> 22 </Version>
+<JMadonnaVersion> 10.4.3 </JMadonnaVersion>
+<Bounds> 0 0 1340 798 </Bounds>
+<NotesEditor>
+<jeditorpane>
+<size>13</size><family>Lucida Grande</family>
+
+</jeditorpane>
+</NotesEditor>
+<jmadonna.EquationPanel>
+<DocPanel>
+</DocPanel>
+<jeditorpane>
+<size>12</size><family>Serif</family>METHOD RK4
+
+STARTTIME = 0
+STOPTIME = 90
+DT = 0.1
+
+{Type Equations Here.}
+
+d/dt (S_c) = -lambda_c*S_c
+d/dt (I_c) =lambda_c*S_c - gamma*I_c
+d/dt (R_c) = gamma*I_c
+d/dt (S_a) = -lambda_a*S_a
+d/dt (I_a) =lambda_a*S_a - gamma*I_a
+d/dt (R_a) = gamma*I_a
+d/dt (S_e) = -lambda_e*S_e
+d/dt (I_e) =lambda_e*S_e - gamma*I_e
+d/dt (R_e) = gamma*I_e
+d/dt(I_8)=lambda_c*S_c-gamma*I_c+lambda_a*S_a-gamma*I_a+lambda_e*S_e - gamma*I_e
+NI = lambda_c*S_c+lambda_a*S_a+lambda_e*S_e 
+
+d/dt (S_c1) = -lambda_c1*S_c1
+d/dt (I_c1) =lambda_c1*S_c1 - gamma*I_c1
+d/dt (R_c1) = gamma*I_c1
+d/dt (S_a1) = -lambda_a1*S_a1
+d/dt (I_a1) =lambda_a1*S_a1 - gamma*I_a1
+d/dt (R_a1) = gamma*I_a1
+d/dt (S_e1) = -lambda_e1*S_e1
+d/dt (I_e1) =lambda_e1*S_e1 - gamma*I_e1
+d/dt (R_e1) = gamma*I_e1
+d/dt(I_7)=lambda_c1*S_c1-gamma*I_c1+lambda_a1*S_a1-gamma*I_a1+lambda_e1*S_e1 - gamma*I_e1
+NN = lambda_c1*S_c1+lambda_a1*S_a1+lambda_e1*S_e1 
+
+
+
+{(alpha_a*N_a+alpha_e*N_e+alpha_c*N_c)}
+lambda_c1 = (gamma*R1/N_c)*  alpha_c/ (alpha_a+alpha_e+alpha_c)* (I_c1 + I_a1 + I_e1)
+lambda_a1= (gamma*R1/N_a)*  alpha_a/ (alpha_a+alpha_e+alpha_c)* (I_c1 + I_a1 + I_e1)
+lambda_e1 = (gamma*R1/N_e)*  alpha_e/ (alpha_a+alpha_e+alpha_c)* (I_c1 + I_a1 + I_e1)
+
+{(alpha_a*N_a+alpha_e*N_e+alpha_c*N_c)}
+lambda_c = (gamma*R0/N_c)*  alpha_c/ (alpha_a+alpha_e+alpha_c)* (I_c + I_a + I_e)
+lambda_a = (gamma*R0/N_a)*  alpha_a/ (alpha_a+alpha_e+alpha_c)* (I_c + I_a + I_e)
+lambda_e = (gamma*R0/N_e)*  alpha_e/ (alpha_a+alpha_e+alpha_c)* (I_c + I_a + I_e)
+
+
+d/dt (S_c2) = -lambda_c2*S_c2
+d/dt (I_c2) =lambda_c2*S_c2 - gamma*I_c2
+d/dt (R_c2) = gamma*I_c2
+d/dt (S_a2) = -lambda_a2*S_a2
+d/dt (I_a2) =lambda_a2*S_a2 - gamma*I_a2
+d/dt (R_a2) = gamma*I_a2
+d/dt (S_e2) = -lambda_e2*S_e2
+d/dt (I_e2) =lambda_e2*S_e2 - gamma*I_e2
+d/dt (R_e2) = gamma*I_e2
+d/dt(I_grad)=lambda_c2*S_c2-gamma*I_c2+lambda_a2*S_a2-gamma*I_a2+lambda_e2*S_e2 - gamma*I_e2
+NN2 = lambda_c2*S_c2+lambda_a2*S_a2+lambda_e2*S_e2 
+
+
+{(alpha_a*N_a+alpha_e*N_e+alpha_c*N_c)}
+lambda_c2 = (gamma*R2/N_c)*  alpha_c/ (alpha_a+alpha_e+alpha_c)* (I_c2 + I_a2 + I_e2)
+lambda_a2= (gamma*R2/N_a)*  alpha_a/ (alpha_a+alpha_e+alpha_c)* (I_c2 + I_a2 + I_e2)
+lambda_e2 = (gamma*R2/N_e)*  alpha_e/ (alpha_a+alpha_e+alpha_c)* (I_c2 + I_a2 + I_e2)
+
+
+Death_c=R_c*IFR_c
+Death_a=R_a*IFR_a
+Death_e=R_e*IFR_e
+
+alpha_c = 0.009
+alpha_a = 0.630
+alpha_e = (1-alpha_c-alpha_a)
+gamma= 1/4.8
+R0= IF TIME<lt>20 THEN 2.5 ELSE 0.5
+R1= IF TIME<lt>20 THEN 2.5 ELSE 0.75
+R2= IF TIME<lt>20 THEN 2.5 ELSE IF TIME<lt>27 THEN 1.5 ELSE IF TIME<lt>34 THEN 1 ELSE 0.5
+
+IFR_c = 0
+IFR_a = 0.0015
+IFR_e = 0.0100
+
+init S_c = 15758424
+init I_c = 0
+init R_c = 0
+init S_a = 76499818
+init I_a = 1
+init R_a = 0
+init S_e = 35185241
+init I_e = 0
+init R_e = 0
+init I_8 = 1
+
+init S_c1 = 15758424
+init I_c1= 0
+init R_c1 = 0
+init S_a1 = 76499818
+init I_a1 = 1
+init R_a1 = 0
+init S_e1 = 35185241
+init I_e1 = 0
+init R_e1 = 0
+init I_7 = 1
+
+init S_c2 = 15758424
+init I_c2= 0
+init R_c2 = 0
+init S_a2 = 76499827
+init I_a2 = 1
+init R_a2 = 0
+init S_e2 = 35185241
+init I_e2 = 0
+init R_e2 = 0
+init I_grad = 1
+
+N_c = S_c + I_c + R_c
+N_a = S_a + I_a + R_a
+N_e = S_e + I_e + R_e
+N=N_c+N_a+N_c
+
+
+
+</jeditorpane>
+</jmadonna.EquationPanel>
+
+<imethod> rk4 </imethod>
+<jmadonna.ParameterPanel>
+<DocPanel>
+</DocPanel>
+<ParamSets>
+</ParamSets>
+</jmadonna.ParameterPanel>
+<jmadonna.MultiPanel>
+<DocPanel>
+</DocPanel>
+<DividerPercent> 1.0 </DividerPercent>
+<Orientation> -1 </Orientation>
+<idx> 0 </idx>
+<TabSplitter>
+<SelectedIndex> 0 </SelectedIndex>
+<graph.COutputFrame>
+<DocPanel>
+<Name>
+Graph 1
+</Name>
+</DocPanel>
+
+<SingleView>
+<graph.COutputView>
+<Name> Graph </Name>
+<GraphToolBar>
+<Table> 1 </Table>
+<Grid> 1 </Grid>
+</GraphToolBar>
+<Plot>
+<LineWidth> 1 </LineWidth>
+</Plot>
+<OV_XVAR>
+<VI_SYMBOL> TIME </VI_SYMBOL>
+</OV_XVAR>
+<OV_YVARS>
+<OV_YVAR_I>
+<VI_SYMBOL> S_c </VI_SYMBOL>
+<VI_SHOW> false </VI_SHOW>
+<VI_Y2AXIS> false </VI_Y2AXIS>
+</OV_YVAR_I>
+<OV_YVAR_I>
+<VI_SYMBOL> I_c </VI_SYMBOL>
+<VI_SHOW> false </VI_SHOW>
+<VI_Y2AXIS> true </VI_Y2AXIS>
+</OV_YVAR_I>
+<OV_YVAR_I>
+<VI_SYMBOL> R_c </VI_SYMBOL>
+<VI_SHOW> false </VI_SHOW>
+<VI_Y2AXIS> false </VI_Y2AXIS>
+</OV_YVAR_I>
+<OV_YVAR_I>
+<VI_SYMBOL> S_a </VI_SYMBOL>
+<VI_SHOW> false </VI_SHOW>
+<VI_Y2AXIS> true </VI_Y2AXIS>
+</OV_YVAR_I>
+<OV_YVAR_I>
+<VI_SYMBOL> I_8 </VI_SYMBOL>
+<VI_SHOW> true </VI_SHOW>
+<VI_Y2AXIS> false </VI_Y2AXIS>
+</OV_YVAR_I>
+<OV_YVAR_I>
+<VI_SYMBOL> I_7 </VI_SYMBOL>
+<VI_SHOW> true </VI_SHOW>
+<VI_Y2AXIS> false </VI_Y2AXIS>
+</OV_YVAR_I>
+<OV_YVAR_I>
+<VI_SYMBOL> I_grad </VI_SYMBOL>
+<VI_SHOW> true </VI_SHOW>
+<VI_Y2AXIS> false </VI_Y2AXIS>
+</OV_YVAR_I>
+</OV_YVARS>
+<OV_TABLE> true </OV_TABLE>
+<OV_FFT> false </OV_FFT>
+<OV_COLORS> true </OV_COLORS>
+<OV_STYLES> false </OV_STYLES>
+<OV_OSCMODE> false </OV_OSCMODE>
+<OV_LINES> true </OV_LINES>
+<OV_POINTS> false </OV_POINTS>
+<OV_GRID> true </OV_GRID>
+<OV_DBTN> true </OV_DBTN>
+<OV_LEGEND> false </OV_LEGEND>
+<OV_PARAMS> false </OV_PARAMS>
+<OV_READOUT> false </OV_READOUT>
+<OV_INITCOND> false </OV_INITCOND>
+<OV_RDOUTFXFY> 0.0 0.0 </OV_RDOUTFXFY>
+<OV_ZSNORMAL>
+</OV_ZSNORMAL>
+<OV_ZSFFT>
+<ZS_SIZE> 1 </ZS_SIZE>
+<ZS_I>
+<ZS_XLOG> true </ZS_XLOG>
+<ZS_Y1LOG> false </ZS_Y1LOG>
+<ZS_Y2LOG> false </ZS_Y2LOG>
+</ZS_I>
+</OV_ZSFFT>
+<OV_ZSOSCMODE>
+</OV_ZSOSCMODE>
+<OV_AUTOLABEL> 0 1 </OV_AUTOLABEL>
+<OV_AUTOLABEL> 1 1 </OV_AUTOLABEL>
+<OV_AUTOLABEL> 2 1 </OV_AUTOLABEL>
+<OV_X1LABELS>  TIME </OV_X1LABELS>
+<OV_Y1LABELS>  I_8, I_7, I_grad </OV_Y1LABELS>
+<OV_Y2LABELS>   </OV_Y2LABELS>
+<OV_LEGENDXY> 0.30000001192092896 0.5 </OV_LEGENDXY>
+<OV_PARAMSXY> 0.30000001192092896 0.5 </OV_PARAMSXY>
+<OV_COLORTABLE> 0 <OV_COLORTABLE>
+</graph.COutputView>
+</SingleView>
+</graph.COutputFrame>
+</TabSplitter>
+<idx> 1 </idx>
+<TabSplitter>
+<SelectedIndex> -1 </SelectedIndex>
+</TabSplitter>
+</jmadonna.MultiPanel>
+
+</Document>
